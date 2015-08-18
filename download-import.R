@@ -27,6 +27,17 @@ blogs <- readLines(filepaths[1])
 news <- readLines(filepaths[2])
 twitter <- readLines(filepaths[3],skipNul=TRUE)
 
-save(blogs, file="blogs.RData")
-save(news, file="news.RData")
-save(twitter, file="twitter.RData")
+#take a sample of the objects. we will set it to 10 percent of the data
+# you can always change the portion if you want a more accurate model
+portion<-.1
+#set the seed so this is replicatable
+set.seed(1445)
+sample_news <- news[1 == rbinom(length(news), 1, portion)]
+sample_twitter <- twitter[1 == rbinom(length(twitter), 1, portion)]
+sample_blogs <- blogs[1 == rbinom(length(blogs), 1, portion)]
+
+# save the 3 objects into one .RData file
+save(sample_blogs, sample_news, sample_twitter, file= "sample_data.RData")
+
+# claim the memory back by removing all the temp objects
+rm(list = ls())
