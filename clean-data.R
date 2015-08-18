@@ -2,6 +2,7 @@
 
 load("sample_data.RData")
 
+# may have to replace this all using TM since I need the tokenization
 #make it all lowercase
 snews<-tolower(snews)
 
@@ -18,6 +19,3 @@ snews <- onespace(snews)
 #get rid of leading and trailing whitespace
 trim <- function (x) gsub("^\\s+|\\s+$", "", x, perl=TRUE)
 snews<-trim(snews)
-
-#remove numbers and punctuation
-noNumbersOrPunctionation <-function (x) gsub("[^a-zA-Z\n\']", " ", x)
