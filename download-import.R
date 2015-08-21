@@ -29,6 +29,7 @@ twitter <- readLines(filepaths[3],skipNul=TRUE)
 
 #take a sample of the objects. we will set it to 10 percent of the data
 # you can always change the portion if you want a more accurate model
+#this variable could be used to make this R script into a function
 portion<-.1
 #set the seed so this is replicatable
 set.seed(1445)
