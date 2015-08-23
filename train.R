@@ -46,8 +46,8 @@ if(length(fm)==0)
 }
 
 # if still no match
-#return "the"
+if(length(fm)==0)
+{
+  #return "the"
 fm<-"the"
-
-# input words is: words
-if(sum(gram1tableOpt==words)>=1) { r<- 6}
+}
