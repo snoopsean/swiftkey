@@ -1,5 +1,6 @@
 #train.R
 
+#make sure to rename the objects as they come in since they all have same name
 load("ngram1table.rda") ; gram1table<-currentTable
 load("ngram2table.rda") ; gram2table<-currentTable
 load("ngram3table.rda") ; gram3table<-currentTable

@@ -9,32 +9,39 @@ You type in a sentence, and it will spit out the next word based on the predicti
 Algorithm Theory
 ========================================================
 
-For more details on authoring R presentations click the
-**Help** button on the toolbar.
+I use Katz backoff algorithm. I take the sentence from the user, split it into an array of words, then i looks at the last two words. I compare it to a table of trigrams to see if there is a match. If there is,
+I return the most common occurence. If there is not, I look at the last word, and compare it to a table of bigrams. I return the most common match
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+https://en.wikipedia.org/wiki/Katz's_back-off_model
 
 Algorithm Code
 ========================================================
 
-```{r}
-summary(cars)
-```
+The code is in several steps:
+
++ Download the data and import it
+
++ Clean the data and extract all trigrams, bigrams, and 4grams.
+
++ Create a model of trigrams and bigrams where each trigram/bigram is sorted by occurence
+
++ Take user input, and compare it to each of those models. Return the first match
 
 Screenshot of the app
 ========================================================
+![screenshot](rpresswiftkey.png)
 
-```{r, echo=FALSE}
-plot(cars)
-```
+Ya its simple, but its solid. It takes about 5 seconds to come back with the answer, and it starts as soon as you finish typing
 
 Github
 ===========
 
 Check out my github page for all the code used to create this shiny app, the code used to create the models, and the code for cleaning the data
 
+https://github.com/snoopsean/swiftkey
 
+Note that the input data was provided by 
+
+www.corpora.heliohost.org
 
 
