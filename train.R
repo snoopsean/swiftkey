@@ -1,9 +1,12 @@
 #train.R
 
-load("ngram1table.Rdata")
-load("ngram2table.Rdata")
-load("ngram3table.Rdata")
-load("ngram4table.Rdata")
+load("ngram1table.rda") ; gram1table<-currentTable
+load("ngram2table.rda") ; gram2table<-currentTable
+load("ngram3table.rda") ; gram3table<-currentTable
+load("ngram4table.rda") ; gram4table<-currentTable
+#load("ngram5table.rda") ; gram5table<-currentTable
+#load("ngram6table.rda") ; gram6table<-currentTable
+rm(currentTable)
 
 # at this point, should I remove anything with a frequency of 1?
 # that would shorten my model, but make it less predictable
@@ -20,37 +23,6 @@ load("ngram4table.Rdata")
 gram1tableOpt<-rownames(gram1table) #; rm(gram1table)
 gram2tableOpt<-rownames(gram2table) #; rm(gram2table)
 gram3tableOpt<-rownames(gram3table) #; rm(gram3table)
-
-# we would get inputbigram, inputunigram. if its smaller, then we set to null
-# next step is to take the last 2 words input by user, and search my trigrams for a match
-# I will find the first match (since its sorted), and return the last word of that trigram
-# if no match is found, take the last word input by user, and search my bigrams
-# return the last word of the bigram with a match
-# if no match is found, return the most common word (in this case "the")
-# i will later change it to look at other parts of the sentence, but for now Ill keep it at that
-
-#input from user, sample for now
-tinput2<-"i dasdasuaksnd"
-tinput1<-"like"
-# create a regular expression to pass into grep
-t2<-paste("^",tinput2," ",sep="")
-t1<-paste("^",tinput1," ",sep="")
-
-#return the first match
-fm<-head(grep(t2,gram3tableOpt,value=TRUE),1)
-
-#if no match
-if(length(fm)==0)
-{
-  fm<-head(grep(t1,gram2tableOpt,value=TRUE),1)
-}
-
-# if still no match
-if(length(fm)==0)
-{
-  #return "the"
-fm<-"the"
-}
 
 save(gram2tableOpt,file="gram2tableOpt.Rdata")
 save(gram3tableOpt,file="gram3tableOpt.Rdata")

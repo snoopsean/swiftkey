@@ -38,9 +38,35 @@ gram4<-make.ngrams(sample_clean,4)
 gram5<-make.ngrams(sample_clean,5)
 gram6<-make.ngrams(sample_clean,6)
 
+#steps for loop are:
+# create the grams list, which is a list of 6 strings that will have the variable names
+# do the same for the gram tables
+# start the loop
+# get our ngrams with make.ngrams, and assign it to the variable being referenced in the loop
+# create our ngramtable and sort them with most common occurences first, and assign that
+# save the ngram object as files to work with easier later
+# remove the ngram objects from RAM
+# save the ngramtable object
+# remove the object
+
+#currentGram<-paste("gram",1:6,sep="")
+#currentTable<-paste("gram",1:6,"table",sep="")
+
+for(i in 1:6)
+{
+  currentGram<-make.ngrams(sample_clean,i)
+  currentTable<-sort(table(currentGram),decreasing=TRUE)
+  #assign(paste("gram",i,".rda",sep=""),currentGram)
+  save(currentGram,file=paste("ngram",i,".rda",sep=""))
+  rm(currentGram)
+  save(currentTable,file=paste("ngram",i,"table.rda",sep="")) 
+  rm(currentTable)
+  i<-i+1
+}
+
+# now that loop is done, remove the sample_clean object
 rm(sample_clean)
 
-#make a table using the unigram frequencies
 gram1table<-sort(table(gram1),decreasing=TRUE)
 gram2table<-sort(table(gram2),decreasing=TRUE)
 gram3table<-sort(table(gram3),decreasing=TRUE)
@@ -55,8 +81,7 @@ save(gram4,file="ngram4.Rdata") ; rm(gram4)
 save(gram5,file="ngram5.Rdata") ; rm(gram5)
 save(gram6,file="ngram6.Rdata") ; rm(gram6)
 
-#save(gram1,gram2,gram3,gram4,gram5,gram6,file = "ngrams.Rdata")
-#rm(gram1,gram2,gram3,gram4,gram5,gram6)
+
 
 save(gram1table,file="ngram1table.Rdata") ; rm(gram1table)
 save(gram2table,file="ngram2table.Rdata") ; rm(gram2table)
