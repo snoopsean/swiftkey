@@ -1,0 +1,40 @@
+Swiftkey Presentation
+========================================================
+author: Sean Lancaster
+date: 8/23/15
+This is a presentation about my shiny app. Its on https://toocool4school.shinyapps.io/shiny. 
+
+You type in a sentence, and it will spit out the next word based on the prediction model.
+
+Algorithm Theory
+========================================================
+
+For more details on authoring R presentations click the
+**Help** button on the toolbar.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Algorithm Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Screenshot of the app
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Github
+===========
+
+Check out my github page for all the code used to create this shiny app, the code used to create the models, and the code for cleaning the data
+
+
+
+
