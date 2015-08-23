@@ -51,3 +51,6 @@ if(length(fm)==0)
   #return "the"
 fm<-"the"
 }
+
+save(gram2tableOpt,file="gram2tableOpt.Rdata")
+save(gram3tableOpt,file="gram3tableOpt.Rdata")
